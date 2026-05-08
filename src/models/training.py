@@ -30,8 +30,6 @@ warnings.filterwarnings("ignore", category=UserWarning)
 logger = logging.getLogger(__name__)
 
 
-# ─── Grid-search training ───────────────────────────────────────────────────
-
 def train_single_model(
     model_name: str,
     X_train: pd.DataFrame,
@@ -67,11 +65,8 @@ def train_single_model(
     return gs.best_estimator_, gs.best_score_
 
 
-# ─── Optuna search spaces ───────────────────────────────────────────────────
-
 def _build_optuna_params(trial: optuna.Trial, model_name: str, task_type: str) -> Dict[str, Any]:
     """Return a hyperparameter dict for the given model, sampled by Optuna."""
-    # ── Classification spaces ──
     if task_type == config.TASK_CLASSIFICATION:
         if model_name == "Logistic Regression":
             return {
@@ -127,7 +122,6 @@ def _build_optuna_params(trial: optuna.Trial, model_name: str, task_type: str) -
                 "classifier__max_features": trial.suggest_categorical("max_features", ["sqrt", "log2", None]),
             }
 
-    # ── Regression spaces ──
     if task_type == config.TASK_REGRESSION:
         if model_name == "Ridge Regression":
             return {"regressor__alpha": trial.suggest_float("alpha", 1e-4, 100.0, log=True)}
@@ -204,8 +198,6 @@ def _optuna_objective(
     scores = cross_val_score(cloned, X_train, y_train, cv=cv, scoring=scoring, n_jobs=config.N_JOBS)
     return float(scores.mean())
 
-
-# ─── Auto-train (Optuna) ────────────────────────────────────────────────────
 
 def auto_train(
     X_train: pd.DataFrame,
@@ -298,8 +290,6 @@ def auto_train(
     results_df = pd.DataFrame(records)
     return best_pipeline, best_model_name, results_df, all_pipelines
 
-
-# ─── Evaluate all (GridSearchCV) ─────────────────────────────────────────────
 
 def evaluate_all_models(
     X_train: pd.DataFrame,

@@ -19,8 +19,6 @@ from ui.pages import home, data_upload, model_training, visualisation, predictio
 warnings.filterwarnings("ignore")
 logging.basicConfig(level=logging.INFO, format="%(levelname)s | %(name)s | %(message)s")
 
-# ─── Page config ─────────────────────────────────────────────────────────────
-
 st.set_page_config(
     page_title=config.APP_TITLE,
     page_icon=config.APP_ICON,
@@ -29,11 +27,7 @@ st.set_page_config(
     menu_items={"About": "AutoML Studio – industry-grade AutoML powered by Optuna & scikit-learn"},
 )
 
-# ─── Styling ─────────────────────────────────────────────────────────────────
-
 inject_styles()
-
-# ─── Session state defaults ──────────────────────────────────────────────────
 
 _STATE_DEFAULTS = {
     "raw_data":        None,
@@ -53,11 +47,7 @@ for key, default in _STATE_DEFAULTS.items():
     if key not in st.session_state:
         st.session_state[key] = default
 
-# ─── Sidebar navigation ─────────────────────────────────────────────────────
-
 page = render_sidebar()
-
-# ─── Page routing ────────────────────────────────────────────────────────────
 
 if page == "🏠 Home":
     home.render()

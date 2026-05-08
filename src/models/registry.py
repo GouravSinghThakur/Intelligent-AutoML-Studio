@@ -25,8 +25,6 @@ from xgboost import XGBClassifier, XGBRegressor
 from src import config
 
 
-# ─── Task-type detection ────────────────────────────────────────────────────
-
 def detect_task_type(y: pd.Series, max_unique_ratio: float = 0.05) -> str:
     """Auto-detect whether the target column represents classification or regression.
 
@@ -46,8 +44,6 @@ def detect_task_type(y: pd.Series, max_unique_ratio: float = 0.05) -> str:
         return config.TASK_CLASSIFICATION
     return config.TASK_REGRESSION
 
-
-# ─── Classification configs (7 models) ──────────────────────────────────────
 
 def get_classification_configs() -> Dict[str, Dict[str, Any]]:
     """Return fresh classification model configs."""
@@ -138,8 +134,6 @@ def get_classification_configs() -> Dict[str, Dict[str, Any]]:
         },
     }
 
-
-# ─── Regression configs (7 models) ──────────────────────────────────────────
 
 def get_regression_configs() -> Dict[str, Dict[str, Any]]:
     """Return fresh regression model configs."""

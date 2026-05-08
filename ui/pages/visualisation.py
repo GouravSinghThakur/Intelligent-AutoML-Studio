@@ -57,7 +57,6 @@ def render() -> None:
             fitted, _ = evaluate_all_models(X_train, y_train, X_test, y_test, task_type=task_type)
             st.session_state.fitted_models = fitted
 
-    # ── Build metrics table ──
     records = []
     if task_type == config.TASK_CLASSIFICATION:
         is_bin = y.nunique() == 2
@@ -75,7 +74,6 @@ def render() -> None:
     import pandas as pd
     metrics_df = pd.DataFrame(records)
 
-    # ── Classification tabs ──
     if task_type == config.TASK_CLASSIFICATION:
         viz_tab1, viz_tab2, viz_tab3, viz_tab4 = st.tabs([
             "Model Comparison", "ROC Curves", "Confusion Matrices", "Best Model Detail"
@@ -115,7 +113,6 @@ def render() -> None:
             st.subheader("Classification Report")
             st.dataframe(classification_report_df(y_test, y_pred_best), use_container_width=True)
 
-    # ── Regression tabs ──
     else:
         viz_tab1, viz_tab2, viz_tab3, viz_tab4 = st.tabs([
             "Model Comparison", "Actual vs Predicted", "Residual Plots", "Predictions Overlay"
