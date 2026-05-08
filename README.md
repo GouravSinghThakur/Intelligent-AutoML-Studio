@@ -21,43 +21,6 @@ Logistic Regression · SVM · Random Forest · XGBoost · K-Nearest Neighbours �
 ### Regression
 Ridge Regression · SVR · Random Forest Regressor · XGBoost Regressor · KNN Regressor · Gradient Boosting Regressor · Extra Trees Regressor
 
-## 📂 Project Structure
-
-```
-AutoML/
-├── app.py                          # Slim entry point
-├── requirements.txt
-├── README.md
-├── .streamlit/
-│   └── config.toml                 # Theme & server config
-├── src/                            # Core business logic
-│   ├── __init__.py
-│   ├── config.py                   # Centralised settings
-│   ├── data_processor.py           # Loading, validation, preprocessing
-│   ├── models/
-│   │   ├── __init__.py             # Re-exports
-│   │   ├── registry.py             # 14 model configs + task detection
-│   │   ├── metrics.py              # Classification & regression metrics
-│   │   └── training.py             # GridSearchCV, Optuna, auto_train
-│   └── visualisations/
-│       ├── __init__.py             # Re-exports
-│       ├── common.py               # Shared charts (heatmap, bar, pie)
-│       ├── classification.py       # ROC curves, confusion matrices
-│       └── regression.py           # Actual vs predicted, residuals
-└── ui/                             # Streamlit UI layer
-    ├── __init__.py
-    ├── styles.py                   # CSS injection
-    ├── sidebar.py                  # Navigation & status
-    ├── helpers.py                  # Shared UI utilities
-    └── pages/
-        ├── __init__.py
-        ├── home.py                 # Landing page
-        ├── data_upload.py          # Upload & analyse data
-        ├── model_training.py       # Train & export models
-        ├── visualisation.py        # Charts & comparisons
-        └── prediction.py           # Real-time inference
-```
-
 ## 🚀 Quick Start
 
 ```bash
