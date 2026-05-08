@@ -16,7 +16,6 @@ N_JOBS         = -1
 SCORING_METRIC_CLF = "accuracy"
 SCORING_METRIC_REG = "r2"
 
-# Legacy alias
 SCORING_METRIC = SCORING_METRIC_CLF
 
 
