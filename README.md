@@ -72,3 +72,8 @@ Want to run this on your own computer?
    ```bash
    streamlit run app.py
    ```
+## 🌐 Live Web Version
+
+Don't want to install anything? You can view the fully running version of Intelligent AutoML Studio right on the web via Hugging Face Spaces!
+
+🔗 **[Click here to view the live dashboard](https://huggingface.co/spaces/GouravSinghThakur/Intelligent_AutoML_Studio)**
